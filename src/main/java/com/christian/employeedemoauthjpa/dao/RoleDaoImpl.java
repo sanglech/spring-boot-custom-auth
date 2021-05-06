@@ -10,7 +10,6 @@ import javax.persistence.EntityManager;
 
 @Repository
 public class RoleDaoImpl implements RoleDao {
-
     @Autowired
     private EntityManager entityManager;
 

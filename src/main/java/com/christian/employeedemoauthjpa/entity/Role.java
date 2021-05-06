@@ -2,6 +2,7 @@ package com.christian.employeedemoauthjpa.entity;
 
 import javax.persistence.*;
 
+@Entity
 @Table(name = "role")
 public class Role {
     @Id

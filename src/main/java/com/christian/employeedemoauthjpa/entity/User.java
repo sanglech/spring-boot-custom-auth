@@ -1,6 +1,7 @@
 package com.christian.employeedemoauthjpa.entity;
 
 import javax.persistence.*;
+
 import java.util.Collection;
 
 @Entity
@@ -116,4 +117,5 @@ public class User {
                 + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", email='" + email + '\''
                 + ", roles=" + roles + '}';
     }
+
 }
