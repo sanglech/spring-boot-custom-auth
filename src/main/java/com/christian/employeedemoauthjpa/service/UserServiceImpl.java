@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -31,19 +32,23 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    @Transactional
     public User findByUserName(String userName) {
-        return null;
+        return userDao.findByUserName(userName);
     }
 
     @Override
+    @Transactional
     public void save(CrmUser crmUser) {
 
     }
 
     //THIS METHOD MUST BE IMPLEMENTED WHEN USING CUSTOM TABLES
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userDao.findByUserName(userName);
+        user.getRoles().size();
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }

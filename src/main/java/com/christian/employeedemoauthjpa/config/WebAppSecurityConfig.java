@@ -28,17 +28,24 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserService userService;
 
+    //Add reference to our custome auth
+    @Autowired
+    private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-        // use jdbc authentication ... oh yeah!!!
-        auth.jdbcAuthentication().dataSource(appDataSource);
-
+        auth.authenticationProvider(authenticationProvider());
     }
+
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/").permitAll();
+                .antMatchers("/").hasRole("EMPLOYEE")
+                .and()
+                .formLogin()
+                    .loginPage("/showFormForLogin")
+                    .successHandler(customAuthenticationSuccessHandler)
+                    .loginProcessingUrl("/authenticateTheUser")
+                .permitAll();
     }
 
     //beans
