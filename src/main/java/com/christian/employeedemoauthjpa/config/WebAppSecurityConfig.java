@@ -45,7 +45,10 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/showFormForLogin")
                     .successHandler(customAuthenticationSuccessHandler)
                     .loginProcessingUrl("/authenticateTheUser")
-                .permitAll();
+                .and()
+                .logout().permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/access-denied");
     }
 
     //beans

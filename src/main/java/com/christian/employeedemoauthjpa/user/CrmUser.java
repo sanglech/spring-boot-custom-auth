@@ -12,10 +12,11 @@ public class CrmUser {
     @Size(min = 1, message = "is required")
     private String password;
 
-    @NotNull(message = "is required")
+   /*
+   @NotNull(message = "is required")
     @Size(min = 1, message = "is required")
     private String matchingPassword;
-
+    */
     @NotNull(message = "is required")
     @Size(min = 1, message = "is required")
     private String firstName;
@@ -32,10 +33,10 @@ public class CrmUser {
 
     }
 
-    public CrmUser(String userName, String password, String matchingPassword, String firstName, String lastName, String email) {
+    public CrmUser(String userName, String password, /*tring matchingPassword,*/ String firstName, String lastName, String email) {
         this.userName = userName;
         this.password = password;
-        this.matchingPassword = matchingPassword;
+        //this.matchingPassword = matchingPassword;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -56,7 +57,7 @@ public class CrmUser {
     public void setPassword(String password) {
         this.password = password;
     }
-
+/*
     public String getMatchingPassword() {
         return matchingPassword;
     }
@@ -64,7 +65,7 @@ public class CrmUser {
     public void setMatchingPassword(String matchingPassword) {
         this.matchingPassword = matchingPassword;
     }
-
+*/
     public String getFirstName() {
         return firstName;
     }
