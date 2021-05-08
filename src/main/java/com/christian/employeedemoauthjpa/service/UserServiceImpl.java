@@ -40,7 +40,17 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void save(CrmUser crmUser) {
+        User tempUser= new User();
+        tempUser.setEmail(crmUser.getEmail());
+        tempUser.setUserName(crmUser.getUserName());
+        tempUser.setFirstName(crmUser.getFirstName());
+        tempUser.setPassword(passwordEncoder.encode(crmUser.getPassword()));
+        tempUser.setLastName(crmUser.getLastName());
 
+        //Add roles
+
+
+        userDao.save(tempUser);
     }
 
     //THIS METHOD MUST BE IMPLEMENTED WHEN USING CUSTOM TABLES
